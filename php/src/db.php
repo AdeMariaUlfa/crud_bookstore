@@ -1,13 +1,13 @@
 <?php
 
 function Createdb(){
-    $servername = "localhost";
+    $servername = "172.20.0.2";
     $username = "root";
     $password = "";
     $dbname = "crud_bookstore";
 
     // create connection
-    $con = mysqli_connect($servername, $username, $password);
+    $con = mysqli_connect($servername, $username, $password,$dbname);
 
     // Check Connection
     if (!$con){
@@ -15,28 +15,9 @@ function Createdb(){
     }
 
     // create Database
-    $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
-
-    if(mysqli_query($con, $sql)){
-        $con = mysqli_connect($servername, $username, $password, $dbname);
-
-        $sql = "
-                        CREATE TABLE IF NOT EXISTS books(
-                            id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                            book_name VARCHAR (25) NOT NULL,
-                            book_publisher VARCHAR (20),
-                            book_price FLOAT 
-                        );
-        ";
-
-        if(mysqli_query($con, $sql)){
-            return $con;
-        }else{
-            echo "Cannot Create table...!";
-        }
-
-    }else{
-        echo "Error while creating database ". mysqli_error($con);
-    }
-
+    if (mysqli_connect_errno())
+{
+ echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
+}
+?>

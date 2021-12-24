@@ -18,12 +18,12 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: crud_newsportal
+      MYSQL_DATABASE: crud_bookstore
     ports:
       - "3306:3306"
     volumes:
       - db:/var/lib/mysql
-      - ./newsportal.sql:/docker-entrypoint-initdb.d/newsportal.sql
+      - ./crud_bookstore.sql:/docker-entrypoint-initdb.d/crud_bookstore.sql
     networks:
       - backend
 
