@@ -3,11 +3,11 @@
 function Createdb(){
     $servername = "172.20.0.2";
     $username = "root";
-    $password = "";
+    $password = "admin";
     $dbname = "crud_bookstore";
 
     // create connection
-    $con = mysqli_connect($servername, $username, $password,$dbname);
+    $con = mysqli_connect($servername, $username, $password, $dbname);
 
     // Check Connection
     if (!$con){
